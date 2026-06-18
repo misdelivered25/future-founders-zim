@@ -28,6 +28,8 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-gold: var(--gold);
   --color-gold-foreground: var(--gold-foreground);
+  --color-royal: var(--royal);
+  --color-royal-foreground: var(--royal-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -42,67 +44,71 @@
 :root {
   --radius: 0.75rem;
 
-  /* Brand palette — deep navy + gold on warm cream */
-  --background: oklch(0.985 0.005 85);            /* warm off-white */
-  --foreground: oklch(0.18 0.04 265);              /* near-black navy ink */
-  --ink: oklch(0.13 0.04 265);
-  --surface: oklch(0.97 0.01 80);
+  /* Future Founders poster palette — Midnight #02060E, Royal #0356C5, Black, White */
+  --background: #FFFFFF;
+  --foreground: #02060E;
+  --ink: #02060E;
+  --surface: #F3F6FC;
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.04 265);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.04 265);
+  --card: #FFFFFF;
+  --card-foreground: #02060E;
+  --popover: #FFFFFF;
+  --popover-foreground: #02060E;
 
-  --primary: oklch(0.27 0.10 265);                 /* deep midnight navy */
-  --primary-foreground: oklch(0.99 0.005 85);
-  --primary-glow: oklch(0.48 0.18 262);            /* royal blue glow */
+  --primary: #02060E;
+  --primary-foreground: #FFFFFF;
+  --primary-glow: #0356C5;
 
-  --secondary: oklch(0.94 0.02 260);
-  --secondary-foreground: oklch(0.22 0.07 265);
+  --secondary: #EDF1F9;
+  --secondary-foreground: #02060E;
 
-  --muted: oklch(0.95 0.012 260);
-  --muted-foreground: oklch(0.48 0.03 260);
+  --muted: #F3F6FC;
+  --muted-foreground: #4A5568;
 
-  --accent: oklch(0.96 0.04 80);
-  --accent-foreground: oklch(0.22 0.07 265);
+  --accent: #0356C5;
+  --accent-foreground: #FFFFFF;
 
-  --gold: oklch(0.78 0.15 80);                     /* warm gold */
-  --gold-foreground: oklch(0.18 0.04 265);
+  --royal: #0356C5;
+  --royal-foreground: #FFFFFF;
+  /* `gold` token retained for backward compat — repurposed to royal blue accent */
+  --gold: #0356C5;
+  --gold-foreground: #FFFFFF;
 
-  --destructive: oklch(0.58 0.22 25);
-  --destructive-foreground: oklch(0.99 0 0);
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
 
-  --border: oklch(0.9 0.015 260);
-  --input: oklch(0.9 0.015 260);
-  --ring: oklch(0.48 0.18 262);
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #0356C5;
 
   --font-display: "Fraunces", "DM Serif Display", Georgia, serif;
   --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
 
-  --gradient-hero: linear-gradient(135deg, oklch(0.20 0.07 265) 0%, oklch(0.32 0.14 262) 60%, oklch(0.48 0.18 262) 100%);
-  --gradient-gold: linear-gradient(135deg, oklch(0.85 0.14 85) 0%, oklch(0.72 0.16 75) 100%);
-  --shadow-elegant: 0 30px 80px -30px color-mix(in oklab, var(--primary) 35%, transparent);
-  --shadow-soft: 0 10px 30px -12px color-mix(in oklab, var(--primary) 18%, transparent);
+  --gradient-hero: linear-gradient(135deg, #02060E 0%, #061538 45%, #0356C5 100%);
+  --gradient-gold: linear-gradient(135deg, #0356C5 0%, #4F8DF7 100%);
+  --gradient-poster: radial-gradient(circle at 20% 0%, rgba(3,86,197,0.35) 0%, transparent 55%), linear-gradient(180deg, #02060E 0%, #050C20 100%);
+  --shadow-elegant: 0 30px 80px -30px rgba(3,86,197,0.45);
+  --shadow-soft: 0 10px 30px -12px rgba(2,6,14,0.25);
 }
 
 .dark {
-  --background: oklch(0.13 0.04 265);
-  --foreground: oklch(0.97 0.01 85);
-  --card: oklch(0.18 0.05 265);
-  --card-foreground: oklch(0.97 0.01 85);
-  --popover: oklch(0.18 0.05 265);
-  --popover-foreground: oklch(0.97 0.01 85);
-  --primary: oklch(0.78 0.15 80);
-  --primary-foreground: oklch(0.13 0.04 265);
-  --secondary: oklch(0.22 0.05 265);
-  --secondary-foreground: oklch(0.97 0.01 85);
-  --muted: oklch(0.22 0.05 265);
-  --muted-foreground: oklch(0.7 0.03 260);
-  --accent: oklch(0.25 0.07 265);
-  --accent-foreground: oklch(0.97 0.01 85);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.78 0.15 80);
+  --background: #02060E;
+  --foreground: #FFFFFF;
+  --card: #061229;
+  --card-foreground: #FFFFFF;
+  --popover: #061229;
+  --popover-foreground: #FFFFFF;
+  --primary: #0356C5;
+  --primary-foreground: #FFFFFF;
+  --secondary: #0B1A38;
+  --secondary-foreground: #FFFFFF;
+  --muted: #0B1A38;
+  --muted-foreground: #94A3B8;
+  --accent: #0356C5;
+  --accent-foreground: #FFFFFF;
+  --border: rgba(255,255,255,0.12);
+  --input: rgba(255,255,255,0.15);
+  --ring: #0356C5;
 }
 
 @layer base {
@@ -126,12 +132,16 @@
   .container-prose { max-width: 1200px; margin-inline: auto; padding-inline: 1.25rem; }
   .gradient-hero { background-image: var(--gradient-hero); }
   .gradient-gold { background-image: var(--gradient-gold); }
+  .gradient-poster { background-image: var(--gradient-poster); }
   .shadow-elegant { box-shadow: var(--shadow-elegant); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .text-balance { text-wrap: balance; }
   .text-gold { color: var(--color-gold); }
   .bg-gold { background-color: var(--color-gold); }
   .border-gold { border-color: var(--color-gold); }
+  .text-royal { color: var(--color-royal); }
+  .bg-royal { background-color: var(--color-royal); }
+  .border-royal { border-color: var(--color-royal); }
 
   .anim-fade-up { animation: fadeUp 0.8s ease-out both; }
   @keyframes fadeUp {

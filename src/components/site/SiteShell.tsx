@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
+import { WhatsAppButton } from "./WhatsAppButton";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
@@ -8,6 +9,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }
@@ -28,4 +30,8 @@ export function PageHeader({ eyebrow, title, subtitle, image }: { eyebrow?: stri
       </div>
     </section>
   );
+}
+
+export function ContentSection({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <section className={`py-20 ${className}`}><div className="container-prose">{children}</div></section>;
 }
