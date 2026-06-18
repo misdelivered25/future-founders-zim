@@ -41,8 +41,8 @@ function Register() {
     e.preventDefault();
     setSubmitting(true);
     const age = parseInt(form.age, 10);
-    if (!age || age < 10 || age > 100) {
-      toast.error("Please enter a valid age.");
+    if (!age || age < 14 || age > 39) {
+      toast.error("Future Founders is for youth aged 14 to 39.");
       setSubmitting(false); return;
     }
     const { error } = await supabase.from("registrations").insert({
@@ -57,7 +57,19 @@ function Register() {
       reason_for_joining: form.reason_for_joining.trim(),
     });
     setSubmitting(false);
-    if (error) { toast.error(error.message); return; }
+    if (error) {
+      const msg = error.message || "";
+      if (msg.includes("registrations_email_unique") || (error.code === "23505" && msg.toLowerCase().includes("email"))) {
+        toast.error("That email is already registered. Please use a different email.");
+      } else if (msg.includes("registrations_whatsapp_unique") || (error.code === "23505" && msg.toLowerCase().includes("whatsapp"))) {
+        toast.error("That WhatsApp number is already registered. Please use a different number.");
+      } else if (msg.includes("registrations_age_range")) {
+        toast.error("Future Founders is for youth aged 14 to 39.");
+      } else {
+        toast.error(msg || "Something went wrong. Please try again.");
+      }
+      return;
+    }
     setDone(true);
     toast.success("Welcome to Future Founders!");
   }
@@ -85,7 +97,7 @@ function Register() {
           <form onSubmit={onSubmit} className="bg-card border border-border rounded-2xl p-8 space-y-5 shadow-soft">
             <div className="grid sm:grid-cols-2 gap-5">
               <div><Label htmlFor="n">Full name *</Label><Input id="n" required value={form.full_name} onChange={update("full_name")} /></div>
-              <div><Label htmlFor="a">Age *</Label><Input id="a" type="number" min={10} max={100} required value={form.age} onChange={update("age")} /></div>
+              <div><Label htmlFor="a">Age (14–39) *</Label><Input id="a" type="number" min={14} max={39} required value={form.age} onChange={update("age")} /></div>
             </div>
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
