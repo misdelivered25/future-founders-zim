@@ -10,24 +10,39 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhoWeServeRouteImport } from './routes/who-we-serve'
+import { Route as VisionMissionRouteImport } from './routes/vision-mission'
 import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ProgramsActivitiesRouteImport } from './routes/programs-activities'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as LeadershipDevelopmentRouteImport } from './routes/leadership-development'
+import { Route as JoinFutureFoundersRouteImport } from './routes/join-future-founders'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as FunctionsRouteImport } from './routes/functions'
+import { Route as FinancialLiteracyRouteImport } from './routes/financial-literacy'
 import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as EventsRouteImport } from './routes/events'
+import { Route as EntrepreneurshipRouteImport } from './routes/entrepreneurship'
 import { Route as DonateRouteImport } from './routes/donate'
+import { Route as CoreValuesRouteImport } from './routes/core-values'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AboutFutureFoundersRouteImport } from './routes/about-future-founders'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as ApiPublicHooksSyncRegistrationsRouteImport } from './routes/api/public/hooks/sync-registrations'
 
 const WhoWeServeRoute = WhoWeServeRouteImport.update({
   id: '/who-we-serve',
   path: '/who-we-serve',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisionMissionRoute = VisionMissionRouteImport.update({
+  id: '/vision-mission',
+  path: '/vision-mission',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SponsorsRoute = SponsorsRouteImport.update({
@@ -40,14 +55,39 @@ const RegisterRoute = RegisterRouteImport.update({
   path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProgramsActivitiesRoute = ProgramsActivitiesRouteImport.update({
+  id: '/programs-activities',
+  path: '/programs-activities',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LeadershipDevelopmentRoute = LeadershipDevelopmentRouteImport.update({
+  id: '/leadership-development',
+  path: '/leadership-development',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinFutureFoundersRoute = JoinFutureFoundersRouteImport.update({
+  id: '/join-future-founders',
+  path: '/join-future-founders',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FunctionsRoute = FunctionsRouteImport.update({
+  id: '/functions',
+  path: '/functions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinancialLiteracyRoute = FinancialLiteracyRouteImport.update({
+  id: '/financial-literacy',
+  path: '/financial-literacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqsRoute = FaqsRouteImport.update({
@@ -60,9 +100,19 @@ const EventsRoute = EventsRouteImport.update({
   path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EntrepreneurshipRoute = EntrepreneurshipRouteImport.update({
+  id: '/entrepreneurship',
+  path: '/entrepreneurship',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DonateRoute = DonateRouteImport.update({
   id: '/donate',
   path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoreValuesRoute = CoreValuesRouteImport.update({
+  id: '/core-values',
+  path: '/core-values',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -78,6 +128,11 @@ const BlogRoute = BlogRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutFutureFoundersRoute = AboutFutureFoundersRouteImport.update({
+  id: '/about-future-founders',
+  path: '/about-future-founders',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -99,124 +154,200 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const ApiPublicHooksSyncRegistrationsRoute =
+  ApiPublicHooksSyncRegistrationsRouteImport.update({
+    id: '/api/public/hooks/sync-registrations',
+    path: '/api/public/hooks/sync-registrations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-future-founders': typeof AboutFutureFoundersRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
+  '/core-values': typeof CoreValuesRoute
   '/donate': typeof DonateRoute
+  '/entrepreneurship': typeof EntrepreneurshipRoute
   '/events': typeof EventsRoute
   '/faqs': typeof FaqsRoute
+  '/financial-literacy': typeof FinancialLiteracyRoute
+  '/functions': typeof FunctionsRoute
   '/gallery': typeof GalleryRoute
+  '/join-future-founders': typeof JoinFutureFoundersRoute
+  '/leadership-development': typeof LeadershipDevelopmentRoute
   '/programs': typeof ProgramsRoute
+  '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
   '/sponsors': typeof SponsorsRoute
+  '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/api/public/hooks/sync-registrations': typeof ApiPublicHooksSyncRegistrationsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/about-future-founders': typeof AboutFutureFoundersRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
+  '/core-values': typeof CoreValuesRoute
   '/donate': typeof DonateRoute
+  '/entrepreneurship': typeof EntrepreneurshipRoute
   '/events': typeof EventsRoute
   '/faqs': typeof FaqsRoute
+  '/financial-literacy': typeof FinancialLiteracyRoute
+  '/functions': typeof FunctionsRoute
   '/gallery': typeof GalleryRoute
+  '/join-future-founders': typeof JoinFutureFoundersRoute
+  '/leadership-development': typeof LeadershipDevelopmentRoute
   '/programs': typeof ProgramsRoute
+  '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
   '/sponsors': typeof SponsorsRoute
+  '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/api/public/hooks/sync-registrations': typeof ApiPublicHooksSyncRegistrationsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/about-future-founders': typeof AboutFutureFoundersRoute
   '/auth': typeof AuthRoute
   '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
+  '/core-values': typeof CoreValuesRoute
   '/donate': typeof DonateRoute
+  '/entrepreneurship': typeof EntrepreneurshipRoute
   '/events': typeof EventsRoute
   '/faqs': typeof FaqsRoute
+  '/financial-literacy': typeof FinancialLiteracyRoute
+  '/functions': typeof FunctionsRoute
   '/gallery': typeof GalleryRoute
+  '/join-future-founders': typeof JoinFutureFoundersRoute
+  '/leadership-development': typeof LeadershipDevelopmentRoute
   '/programs': typeof ProgramsRoute
+  '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
   '/sponsors': typeof SponsorsRoute
+  '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/api/public/hooks/sync-registrations': typeof ApiPublicHooksSyncRegistrationsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/about-future-founders'
     | '/auth'
     | '/blog'
     | '/contact'
+    | '/core-values'
     | '/donate'
+    | '/entrepreneurship'
     | '/events'
     | '/faqs'
+    | '/financial-literacy'
+    | '/functions'
     | '/gallery'
+    | '/join-future-founders'
+    | '/leadership-development'
     | '/programs'
+    | '/programs-activities'
     | '/register'
     | '/sponsors'
+    | '/vision-mission'
     | '/who-we-serve'
     | '/admin'
+    | '/api/public/hooks/sync-registrations'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/about-future-founders'
     | '/auth'
     | '/blog'
     | '/contact'
+    | '/core-values'
     | '/donate'
+    | '/entrepreneurship'
     | '/events'
     | '/faqs'
+    | '/financial-literacy'
+    | '/functions'
     | '/gallery'
+    | '/join-future-founders'
+    | '/leadership-development'
     | '/programs'
+    | '/programs-activities'
     | '/register'
     | '/sponsors'
+    | '/vision-mission'
     | '/who-we-serve'
     | '/admin'
+    | '/api/public/hooks/sync-registrations'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/about'
+    | '/about-future-founders'
     | '/auth'
     | '/blog'
     | '/contact'
+    | '/core-values'
     | '/donate'
+    | '/entrepreneurship'
     | '/events'
     | '/faqs'
+    | '/financial-literacy'
+    | '/functions'
     | '/gallery'
+    | '/join-future-founders'
+    | '/leadership-development'
     | '/programs'
+    | '/programs-activities'
     | '/register'
     | '/sponsors'
+    | '/vision-mission'
     | '/who-we-serve'
     | '/_authenticated/admin'
+    | '/api/public/hooks/sync-registrations'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AboutFutureFoundersRoute: typeof AboutFutureFoundersRoute
   AuthRoute: typeof AuthRoute
   BlogRoute: typeof BlogRoute
   ContactRoute: typeof ContactRoute
+  CoreValuesRoute: typeof CoreValuesRoute
   DonateRoute: typeof DonateRoute
+  EntrepreneurshipRoute: typeof EntrepreneurshipRoute
   EventsRoute: typeof EventsRoute
   FaqsRoute: typeof FaqsRoute
+  FinancialLiteracyRoute: typeof FinancialLiteracyRoute
+  FunctionsRoute: typeof FunctionsRoute
   GalleryRoute: typeof GalleryRoute
+  JoinFutureFoundersRoute: typeof JoinFutureFoundersRoute
+  LeadershipDevelopmentRoute: typeof LeadershipDevelopmentRoute
   ProgramsRoute: typeof ProgramsRoute
+  ProgramsActivitiesRoute: typeof ProgramsActivitiesRoute
   RegisterRoute: typeof RegisterRoute
   SponsorsRoute: typeof SponsorsRoute
+  VisionMissionRoute: typeof VisionMissionRoute
   WhoWeServeRoute: typeof WhoWeServeRoute
+  ApiPublicHooksSyncRegistrationsRoute: typeof ApiPublicHooksSyncRegistrationsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -226,6 +357,13 @@ declare module '@tanstack/react-router' {
       path: '/who-we-serve'
       fullPath: '/who-we-serve'
       preLoaderRoute: typeof WhoWeServeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vision-mission': {
+      id: '/vision-mission'
+      path: '/vision-mission'
+      fullPath: '/vision-mission'
+      preLoaderRoute: typeof VisionMissionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sponsors': {
@@ -242,6 +380,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/programs-activities': {
+      id: '/programs-activities'
+      path: '/programs-activities'
+      fullPath: '/programs-activities'
+      preLoaderRoute: typeof ProgramsActivitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/programs': {
       id: '/programs'
       path: '/programs'
@@ -249,11 +394,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgramsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/leadership-development': {
+      id: '/leadership-development'
+      path: '/leadership-development'
+      fullPath: '/leadership-development'
+      preLoaderRoute: typeof LeadershipDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/join-future-founders': {
+      id: '/join-future-founders'
+      path: '/join-future-founders'
+      fullPath: '/join-future-founders'
+      preLoaderRoute: typeof JoinFutureFoundersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/functions': {
+      id: '/functions'
+      path: '/functions'
+      fullPath: '/functions'
+      preLoaderRoute: typeof FunctionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financial-literacy': {
+      id: '/financial-literacy'
+      path: '/financial-literacy'
+      fullPath: '/financial-literacy'
+      preLoaderRoute: typeof FinancialLiteracyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faqs': {
@@ -270,11 +443,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/entrepreneurship': {
+      id: '/entrepreneurship'
+      path: '/entrepreneurship'
+      fullPath: '/entrepreneurship'
+      preLoaderRoute: typeof EntrepreneurshipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/donate': {
       id: '/donate'
       path: '/donate'
       fullPath: '/donate'
       preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/core-values': {
+      id: '/core-values'
+      path: '/core-values'
+      fullPath: '/core-values'
+      preLoaderRoute: typeof CoreValuesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -296,6 +483,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-future-founders': {
+      id: '/about-future-founders'
+      path: '/about-future-founders'
+      fullPath: '/about-future-founders'
+      preLoaderRoute: typeof AboutFutureFoundersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -326,6 +520,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/api/public/hooks/sync-registrations': {
+      id: '/api/public/hooks/sync-registrations'
+      path: '/api/public/hooks/sync-registrations'
+      fullPath: '/api/public/hooks/sync-registrations'
+      preLoaderRoute: typeof ApiPublicHooksSyncRegistrationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -344,28 +545,28 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AboutFutureFoundersRoute: AboutFutureFoundersRoute,
   AuthRoute: AuthRoute,
   BlogRoute: BlogRoute,
   ContactRoute: ContactRoute,
+  CoreValuesRoute: CoreValuesRoute,
   DonateRoute: DonateRoute,
+  EntrepreneurshipRoute: EntrepreneurshipRoute,
   EventsRoute: EventsRoute,
   FaqsRoute: FaqsRoute,
+  FinancialLiteracyRoute: FinancialLiteracyRoute,
+  FunctionsRoute: FunctionsRoute,
   GalleryRoute: GalleryRoute,
+  JoinFutureFoundersRoute: JoinFutureFoundersRoute,
+  LeadershipDevelopmentRoute: LeadershipDevelopmentRoute,
   ProgramsRoute: ProgramsRoute,
+  ProgramsActivitiesRoute: ProgramsActivitiesRoute,
   RegisterRoute: RegisterRoute,
   SponsorsRoute: SponsorsRoute,
+  VisionMissionRoute: VisionMissionRoute,
   WhoWeServeRoute: WhoWeServeRoute,
+  ApiPublicHooksSyncRegistrationsRoute: ApiPublicHooksSyncRegistrationsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
