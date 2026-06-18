@@ -33,6 +33,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as ApiPublicHooksSyncRegistrationsRouteImport } from './routes/api/public/hooks/sync-registrations'
 
 const WhoWeServeRoute = WhoWeServeRouteImport.update({
   id: '/who-we-serve',
@@ -153,6 +154,12 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const ApiPublicHooksSyncRegistrationsRoute =
+  ApiPublicHooksSyncRegistrationsRouteImport.update({
+    id: '/api/public/hooks/sync-registrations',
+    path: '/api/public/hooks/sync-registrations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -178,6 +185,7 @@ export interface FileRoutesByFullPath {
   '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/api/public/hooks/sync-registrations': typeof ApiPublicHooksSyncRegistrationsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -203,6 +211,7 @@ export interface FileRoutesByTo {
   '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/api/public/hooks/sync-registrations': typeof ApiPublicHooksSyncRegistrationsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -230,6 +239,7 @@ export interface FileRoutesById {
   '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/api/public/hooks/sync-registrations': typeof ApiPublicHooksSyncRegistrationsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -257,6 +267,7 @@ export interface FileRouteTypes {
     | '/vision-mission'
     | '/who-we-serve'
     | '/admin'
+    | '/api/public/hooks/sync-registrations'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -282,6 +293,7 @@ export interface FileRouteTypes {
     | '/vision-mission'
     | '/who-we-serve'
     | '/admin'
+    | '/api/public/hooks/sync-registrations'
   id:
     | '__root__'
     | '/'
@@ -308,6 +320,7 @@ export interface FileRouteTypes {
     | '/vision-mission'
     | '/who-we-serve'
     | '/_authenticated/admin'
+    | '/api/public/hooks/sync-registrations'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -334,6 +347,7 @@ export interface RootRouteChildren {
   SponsorsRoute: typeof SponsorsRoute
   VisionMissionRoute: typeof VisionMissionRoute
   WhoWeServeRoute: typeof WhoWeServeRoute
+  ApiPublicHooksSyncRegistrationsRoute: typeof ApiPublicHooksSyncRegistrationsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -506,6 +520,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/api/public/hooks/sync-registrations': {
+      id: '/api/public/hooks/sync-registrations'
+      path: '/api/public/hooks/sync-registrations'
+      fullPath: '/api/public/hooks/sync-registrations'
+      preLoaderRoute: typeof ApiPublicHooksSyncRegistrationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -544,6 +565,7 @@ const rootRouteChildren: RootRouteChildren = {
   SponsorsRoute: SponsorsRoute,
   VisionMissionRoute: VisionMissionRoute,
   WhoWeServeRoute: WhoWeServeRoute,
+  ApiPublicHooksSyncRegistrationsRoute: ApiPublicHooksSyncRegistrationsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
