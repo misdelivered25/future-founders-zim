@@ -31,12 +31,6 @@ const AUDIENCE = [
   { img: img.graduate, title: "Graduates & emerging professionals", desc: "Lead with confidence, finance literacy and clarity." },
 ];
 
-const IMPACT = [
-  { n: "10K+", l: "Youth empowered" },
-  { n: "120+", l: "Workshops delivered" },
-  { n: "45+", l: "Communities reached" },
-  { n: "300+", l: "Mentors & alumni" },
-];
 
 function Home() {
   return (
@@ -68,14 +62,6 @@ function Home() {
             </Link>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl">
-            {IMPACT.map((s) => (
-              <div key={s.l}>
-                <div className="font-display text-3xl md:text-4xl text-gold">{s.n}</div>
-                <div className="text-xs uppercase tracking-wider text-background/65 mt-1">{s.l}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
