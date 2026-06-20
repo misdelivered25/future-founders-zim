@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhoWeServeRouteImport } from './routes/who-we-serve'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
+import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ProgramsActivitiesRouteImport } from './routes/programs-activities'
@@ -43,6 +44,11 @@ const WhoWeServeRoute = WhoWeServeRouteImport.update({
 const VisionMissionRoute = VisionMissionRouteImport.update({
   id: '/vision-mission',
   path: '/vision-mission',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestimonialsRoute = TestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SponsorsRoute = SponsorsRouteImport.update({
@@ -182,6 +188,7 @@ export interface FileRoutesByFullPath {
   '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
   '/sponsors': typeof SponsorsRoute
+  '/testimonials': typeof TestimonialsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/admin': typeof AuthenticatedAdminRoute
@@ -208,6 +215,7 @@ export interface FileRoutesByTo {
   '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
   '/sponsors': typeof SponsorsRoute
+  '/testimonials': typeof TestimonialsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/admin': typeof AuthenticatedAdminRoute
@@ -236,6 +244,7 @@ export interface FileRoutesById {
   '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
   '/sponsors': typeof SponsorsRoute
+  '/testimonials': typeof TestimonialsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
@@ -264,6 +273,7 @@ export interface FileRouteTypes {
     | '/programs-activities'
     | '/register'
     | '/sponsors'
+    | '/testimonials'
     | '/vision-mission'
     | '/who-we-serve'
     | '/admin'
@@ -290,6 +300,7 @@ export interface FileRouteTypes {
     | '/programs-activities'
     | '/register'
     | '/sponsors'
+    | '/testimonials'
     | '/vision-mission'
     | '/who-we-serve'
     | '/admin'
@@ -317,6 +328,7 @@ export interface FileRouteTypes {
     | '/programs-activities'
     | '/register'
     | '/sponsors'
+    | '/testimonials'
     | '/vision-mission'
     | '/who-we-serve'
     | '/_authenticated/admin'
@@ -345,6 +357,7 @@ export interface RootRouteChildren {
   ProgramsActivitiesRoute: typeof ProgramsActivitiesRoute
   RegisterRoute: typeof RegisterRoute
   SponsorsRoute: typeof SponsorsRoute
+  TestimonialsRoute: typeof TestimonialsRoute
   VisionMissionRoute: typeof VisionMissionRoute
   WhoWeServeRoute: typeof WhoWeServeRoute
   ApiPublicHooksSyncRegistrationsRoute: typeof ApiPublicHooksSyncRegistrationsRoute
@@ -364,6 +377,13 @@ declare module '@tanstack/react-router' {
       path: '/vision-mission'
       fullPath: '/vision-mission'
       preLoaderRoute: typeof VisionMissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/testimonials': {
+      id: '/testimonials'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sponsors': {
@@ -563,6 +583,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProgramsActivitiesRoute: ProgramsActivitiesRoute,
   RegisterRoute: RegisterRoute,
   SponsorsRoute: SponsorsRoute,
+  TestimonialsRoute: TestimonialsRoute,
   VisionMissionRoute: VisionMissionRoute,
   WhoWeServeRoute: WhoWeServeRoute,
   ApiPublicHooksSyncRegistrationsRoute: ApiPublicHooksSyncRegistrationsRoute,
@@ -570,13 +591,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
