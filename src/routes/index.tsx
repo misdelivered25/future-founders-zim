@@ -62,6 +62,24 @@ function Home() {
             </Link>
           </div>
 
+          <div className="mt-14 grid sm:grid-cols-3 gap-4 anim-fade-up">
+            {[
+              { icon: Users, label: "Youth-led community", desc: "Connect with founders aged 14–39 across Africa." },
+              { icon: GraduationCap, label: "Free academy access", desc: "Join cohorts, workshops and mentor sessions." },
+              { icon: Sparkles, label: "Real business outcomes", desc: "Launch, fund and scale your idea with us." },
+            ].map((item) => (
+              <div key={item.label} className="flex items-start gap-3 p-4 rounded-xl bg-background/8 border border-background/15 backdrop-blur-sm">
+                <div className="w-9 h-9 rounded-lg bg-gold/20 flex items-center justify-center shrink-0">
+                  <item.icon className="w-4 h-4 text-background" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-background">{item.label}</div>
+                  <div className="text-xs text-background/70 leading-relaxed">{item.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
