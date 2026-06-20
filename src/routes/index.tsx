@@ -62,14 +62,6 @@ function Home() {
             </Link>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl">
-            {IMPACT.map((s) => (
-              <div key={s.l}>
-                <div className="font-display text-3xl md:text-4xl text-gold">{s.n}</div>
-                <div className="text-xs uppercase tracking-wider text-background/65 mt-1">{s.l}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
