@@ -31,12 +31,6 @@ const AUDIENCE = [
   { img: img.graduate, title: "Graduates & emerging professionals", desc: "Lead with confidence, finance literacy and clarity." },
 ];
 
-const IMPACT = [
-  { n: "10K+", l: "Youth empowered" },
-  { n: "120+", l: "Workshops delivered" },
-  { n: "45+", l: "Communities reached" },
-  { n: "300+", l: "Mentors & alumni" },
-];
 
 function Home() {
   return (
