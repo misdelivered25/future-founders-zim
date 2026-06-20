@@ -1,0 +1,42 @@
+:root {
+  --ff-midnight: #02060e;
+  --ff-blue: #0356c5;
+  --ff-white: #ffffff;
+  --ff-black: #000000;
+}
+
+body {
+  background: var(--ff-midnight);
+}
+
+.ff-glow {
+  box-shadow: 0 0 32px rgba(3, 86, 197, 0.42);
+}
+
+.ff-card {
+  border: 1px solid rgba(3, 86, 197, 0.32);
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(18px);
+  border-radius: 28px;
+}
+
+.ff-image-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.ff-image-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(2, 6, 14, 0.85), rgba(2, 6, 14, 0.2));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
