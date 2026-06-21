@@ -18,7 +18,7 @@ export const Route = createFileRoute("/share-your-story")({
       { property: "og:title", content: "Share Your Story — Future Founders" },
       { property: "og:description", content: "Submit a testimonial to the Future Founders community." },
       { property: "og:url", content: "https://future-founders-zim.lovable.app/share-your-story" },
-      { property: "og:image", content: img.publicSpeaking ?? img.speaking },
+      { property: "og:image", content: img.speaking },
     ],
     links: [{ rel: "canonical", href: "https://future-founders-zim.lovable.app/share-your-story" }],
   }),

@@ -162,7 +162,7 @@ function Donate() {
               <div><Label htmlFor="de">Email *</Label><Input id="de" type="email" required value={form.email} onChange={upd("email")} /></div>
             </div>
             <div><Label htmlFor="dp">Phone / WhatsApp</Label><Input id="dp" value={form.phone_number} onChange={upd("phone_number")} /></div>
-            <div><Label htmlFor="dm">Message (optional)</Label><Textarea id="dm" rows={3} value={form.message} onChange={upd("dm" as never) || upd("message")} placeholder="Anything we should know?" /></div>
+            <div><Label htmlFor="dm">Message (optional)</Label><Textarea id="dm" rows={3} value={form.message} onChange={upd("message")} placeholder="Anything we should know?" /></div>
 
             <Button type="submit" disabled={submitting} className="w-full bg-primary h-12 text-base">
               <Heart className="w-4 h-4 mr-2" />
