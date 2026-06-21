@@ -21,6 +21,7 @@ async function fetchPost(slug: string): Promise<Post> {
 }
 
 export const Route = createFileRoute("/blog/$slug")({
+  ssr: false,
   loader: ({ params }) => fetchPost(params.slug),
   head: ({ params, loaderData }) => ({
     meta: [
