@@ -203,6 +203,27 @@ export type Database = {
         }
         Relationships: []
       }
+      newsletter_subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          source: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          source?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          source?: string | null
+        }
+        Relationships: []
+      }
       notifications: {
         Row: {
           body: string | null
@@ -314,6 +335,48 @@ export type Database = {
         }
         Relationships: []
       }
+      resources: {
+        Row: {
+          category: string | null
+          cover_url: string | null
+          created_at: string
+          description: string | null
+          id: string
+          is_published: boolean
+          kind: string
+          sort_order: number
+          title: string
+          updated_at: string
+          url: string
+        }
+        Insert: {
+          category?: string | null
+          cover_url?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_published?: boolean
+          kind?: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+          url: string
+        }
+        Update: {
+          category?: string | null
+          cover_url?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_published?: boolean
+          kind?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+          url?: string
+        }
+        Relationships: []
+      }
       site_settings: {
         Row: {
           key: string
@@ -394,6 +457,8 @@ export type Database = {
       }
       testimonials: {
         Row: {
+          author_email: string | null
+          author_location: string | null
           author_name: string
           author_role: string | null
           created_at: string
@@ -402,8 +467,11 @@ export type Database = {
           is_published: boolean
           quote: string
           sort_order: number
+          status: string
         }
         Insert: {
+          author_email?: string | null
+          author_location?: string | null
           author_name: string
           author_role?: string | null
           created_at?: string
@@ -412,8 +480,11 @@ export type Database = {
           is_published?: boolean
           quote: string
           sort_order?: number
+          status?: string
         }
         Update: {
+          author_email?: string | null
+          author_location?: string | null
           author_name?: string
           author_role?: string | null
           created_at?: string
@@ -422,6 +493,7 @@ export type Database = {
           is_published?: boolean
           quote?: string
           sort_order?: number
+          status?: string
         }
         Relationships: []
       }
