@@ -13,6 +13,8 @@ import { Route as WhoWeServeRouteImport } from './routes/who-we-serve'
 import { Route as VisionMissionRouteImport } from './routes/vision-mission'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as SponsorsRouteImport } from './routes/sponsors'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ShareYourStoryRouteImport } from './routes/share-your-story'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ProgramsActivitiesRouteImport } from './routes/programs-activities'
 import { Route as ProgramsRouteImport } from './routes/programs'
@@ -33,6 +35,7 @@ import { Route as AboutFutureFoundersRouteImport } from './routes/about-future-f
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as ApiPublicHooksSyncRegistrationsRouteImport } from './routes/api/public/hooks/sync-registrations'
 
@@ -54,6 +57,16 @@ const TestimonialsRoute = TestimonialsRouteImport.update({
 const SponsorsRoute = SponsorsRouteImport.update({
   id: '/sponsors',
   path: '/sponsors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShareYourStoryRoute = ShareYourStoryRouteImport.update({
+  id: '/share-your-story',
+  path: '/share-your-story',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -155,6 +168,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -172,7 +190,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/about-future-founders': typeof AboutFutureFoundersRoute
   '/auth': typeof AuthRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
   '/core-values': typeof CoreValuesRoute
   '/donate': typeof DonateRoute
@@ -187,11 +205,14 @@ export interface FileRoutesByFullPath {
   '/programs': typeof ProgramsRoute
   '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
+  '/share-your-story': typeof ShareYourStoryRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sponsors': typeof SponsorsRoute
   '/testimonials': typeof TestimonialsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/api/public/hooks/sync-registrations': typeof ApiPublicHooksSyncRegistrationsRoute
 }
 export interface FileRoutesByTo {
@@ -199,7 +220,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/about-future-founders': typeof AboutFutureFoundersRoute
   '/auth': typeof AuthRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
   '/core-values': typeof CoreValuesRoute
   '/donate': typeof DonateRoute
@@ -214,11 +235,14 @@ export interface FileRoutesByTo {
   '/programs': typeof ProgramsRoute
   '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
+  '/share-your-story': typeof ShareYourStoryRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sponsors': typeof SponsorsRoute
   '/testimonials': typeof TestimonialsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/api/public/hooks/sync-registrations': typeof ApiPublicHooksSyncRegistrationsRoute
 }
 export interface FileRoutesById {
@@ -228,7 +252,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/about-future-founders': typeof AboutFutureFoundersRoute
   '/auth': typeof AuthRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
   '/core-values': typeof CoreValuesRoute
   '/donate': typeof DonateRoute
@@ -243,11 +267,14 @@ export interface FileRoutesById {
   '/programs': typeof ProgramsRoute
   '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
+  '/share-your-story': typeof ShareYourStoryRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sponsors': typeof SponsorsRoute
   '/testimonials': typeof TestimonialsRoute
   '/vision-mission': typeof VisionMissionRoute
   '/who-we-serve': typeof WhoWeServeRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/api/public/hooks/sync-registrations': typeof ApiPublicHooksSyncRegistrationsRoute
 }
 export interface FileRouteTypes {
@@ -272,11 +299,14 @@ export interface FileRouteTypes {
     | '/programs'
     | '/programs-activities'
     | '/register'
+    | '/share-your-story'
+    | '/sitemap.xml'
     | '/sponsors'
     | '/testimonials'
     | '/vision-mission'
     | '/who-we-serve'
     | '/admin'
+    | '/blog/$slug'
     | '/api/public/hooks/sync-registrations'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -299,11 +329,14 @@ export interface FileRouteTypes {
     | '/programs'
     | '/programs-activities'
     | '/register'
+    | '/share-your-story'
+    | '/sitemap.xml'
     | '/sponsors'
     | '/testimonials'
     | '/vision-mission'
     | '/who-we-serve'
     | '/admin'
+    | '/blog/$slug'
     | '/api/public/hooks/sync-registrations'
   id:
     | '__root__'
@@ -327,11 +360,14 @@ export interface FileRouteTypes {
     | '/programs'
     | '/programs-activities'
     | '/register'
+    | '/share-your-story'
+    | '/sitemap.xml'
     | '/sponsors'
     | '/testimonials'
     | '/vision-mission'
     | '/who-we-serve'
     | '/_authenticated/admin'
+    | '/blog/$slug'
     | '/api/public/hooks/sync-registrations'
   fileRoutesById: FileRoutesById
 }
@@ -341,7 +377,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AboutFutureFoundersRoute: typeof AboutFutureFoundersRoute
   AuthRoute: typeof AuthRoute
-  BlogRoute: typeof BlogRoute
+  BlogRoute: typeof BlogRouteWithChildren
   ContactRoute: typeof ContactRoute
   CoreValuesRoute: typeof CoreValuesRoute
   DonateRoute: typeof DonateRoute
@@ -356,6 +392,8 @@ export interface RootRouteChildren {
   ProgramsRoute: typeof ProgramsRoute
   ProgramsActivitiesRoute: typeof ProgramsActivitiesRoute
   RegisterRoute: typeof RegisterRoute
+  ShareYourStoryRoute: typeof ShareYourStoryRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SponsorsRoute: typeof SponsorsRoute
   TestimonialsRoute: typeof TestimonialsRoute
   VisionMissionRoute: typeof VisionMissionRoute
@@ -391,6 +429,20 @@ declare module '@tanstack/react-router' {
       path: '/sponsors'
       fullPath: '/sponsors'
       preLoaderRoute: typeof SponsorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/share-your-story': {
+      id: '/share-your-story'
+      path: '/share-your-story'
+      fullPath: '/share-your-story'
+      preLoaderRoute: typeof ShareYourStoryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -533,6 +585,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
@@ -561,13 +620,23 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AboutFutureFoundersRoute: AboutFutureFoundersRoute,
   AuthRoute: AuthRoute,
-  BlogRoute: BlogRoute,
+  BlogRoute: BlogRouteWithChildren,
   ContactRoute: ContactRoute,
   CoreValuesRoute: CoreValuesRoute,
   DonateRoute: DonateRoute,
@@ -582,6 +651,8 @@ const rootRouteChildren: RootRouteChildren = {
   ProgramsRoute: ProgramsRoute,
   ProgramsActivitiesRoute: ProgramsActivitiesRoute,
   RegisterRoute: RegisterRoute,
+  ShareYourStoryRoute: ShareYourStoryRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SponsorsRoute: SponsorsRoute,
   TestimonialsRoute: TestimonialsRoute,
   VisionMissionRoute: VisionMissionRoute,
@@ -591,13 +662,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

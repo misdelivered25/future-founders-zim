@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import { WhatsAppButton } from "./WhatsAppButton";
+import { SiteEnhancements } from "./SiteEnhancements";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
@@ -9,7 +9,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />
-      <WhatsAppButton />
+      <SiteEnhancements />
     </div>
   );
 }
