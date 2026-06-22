@@ -28,6 +28,7 @@ const PROGRAMS_MENU: Item[] = [
 
 const TOP: Item[] = [
   { to: "/", label: "Home" },
+  { to: "/resources", label: "Resources" },
   { to: "/gallery", label: "Gallery" },
   { to: "/blog", label: "Blog" },
   { to: "/sponsors", label: "Sponsors" },
