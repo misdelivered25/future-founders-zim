@@ -61,6 +61,7 @@ export function Navbar() {
     ...ABOUT_MENU,
     ...PILLARS_MENU,
     ...PROGRAMS_MENU,
+    { to: "/resources", label: "Resources" },
     { to: "/gallery", label: "Gallery" },
     { to: "/blog", label: "Blog" },
     { to: "/sponsors", label: "Sponsors" },
