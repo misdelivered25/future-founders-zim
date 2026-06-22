@@ -6,7 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { img } from "@/lib/images";
-import { LogOut, Users, Mail, ShieldAlert, RefreshCw, Heart, Calendar, Image, Quote, FileText, Award, Handshake, ClipboardList } from "lucide-react";
+import { LogOut, Users, Mail, ShieldAlert, RefreshCw, Heart, Calendar, Image, Quote, FileText, Award, Handshake, ClipboardList, BookOpen } from "lucide-react";
 import { toast } from "sonner";
 import { ResourceManager, StatusBadge } from "@/components/admin/ResourceManager";
 
