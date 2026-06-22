@@ -46,7 +46,7 @@ export function Footer() {
         <div>
           <h4 className="text-background font-display text-base mb-4">Academy</h4>
           <ul className="space-y-2.5 text-sm text-background/70">
-            {[["/financial-literacy","Financial Literacy"],["/entrepreneurship","Entrepreneurship"],["/leadership-development","Leadership"],["/programs-activities","Programs & Activities"],["/events","Events"],["/testimonials","Stories"]].map(([to,l])=>(
+            {[["/financial-literacy","Financial Literacy"],["/entrepreneurship","Entrepreneurship"],["/leadership-development","Leadership"],["/programs-activities","Programs & Activities"],["/resources","Resources"],["/events","Events"],["/testimonials","Stories"]].map(([to,l])=>(
               <li key={to}><Link to={to} className="hover:text-royal">{l}</Link></li>
             ))}
           </ul>
