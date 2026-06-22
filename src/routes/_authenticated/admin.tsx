@@ -19,7 +19,7 @@ type Contact = { id: string; full_name: string; email: string; phone_number: str
 type Donation = { id: string; donor_name: string; email: string; amount: number; currency: string; impact_area: string; status: string; created_at: string };
 type SyncLog = { id: string; source: string; status: string; rows_synced: number; error_message: string | null; created_at: string };
 
-type Tab = "registrations" | "contacts" | "donations" | "events" | "gallery" | "testimonials" | "blog" | "sponsors" | "partners" | "sync";
+type Tab = "registrations" | "contacts" | "donations" | "events" | "gallery" | "testimonials" | "blog" | "resources" | "sponsors" | "partners" | "sync";
 
 const TABS: { id: Tab; label: string; icon: typeof Users }[] = [
   { id: "registrations", label: "Registrations", icon: Users },
@@ -29,6 +29,7 @@ const TABS: { id: Tab; label: string; icon: typeof Users }[] = [
   { id: "gallery", label: "Gallery", icon: Image },
   { id: "testimonials", label: "Testimonials", icon: Quote },
   { id: "blog", label: "Blog", icon: FileText },
+  { id: "resources", label: "Resources", icon: BookOpen },
   { id: "sponsors", label: "Sponsors", icon: Award },
   { id: "partners", label: "Partners", icon: Handshake },
   { id: "sync", label: "Sync logs", icon: ClipboardList },
