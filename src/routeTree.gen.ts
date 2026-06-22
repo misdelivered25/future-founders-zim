@@ -15,6 +15,7 @@ import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShareYourStoryRouteImport } from './routes/share-your-story'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ProgramsActivitiesRouteImport } from './routes/programs-activities'
 import { Route as ProgramsRouteImport } from './routes/programs'
@@ -67,6 +68,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ShareYourStoryRoute = ShareYourStoryRouteImport.update({
   id: '/share-your-story',
   path: '/share-your-story',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -205,6 +211,7 @@ export interface FileRoutesByFullPath {
   '/programs': typeof ProgramsRoute
   '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
+  '/resources': typeof ResourcesRoute
   '/share-your-story': typeof ShareYourStoryRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sponsors': typeof SponsorsRoute
@@ -235,6 +242,7 @@ export interface FileRoutesByTo {
   '/programs': typeof ProgramsRoute
   '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
+  '/resources': typeof ResourcesRoute
   '/share-your-story': typeof ShareYourStoryRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sponsors': typeof SponsorsRoute
@@ -267,6 +275,7 @@ export interface FileRoutesById {
   '/programs': typeof ProgramsRoute
   '/programs-activities': typeof ProgramsActivitiesRoute
   '/register': typeof RegisterRoute
+  '/resources': typeof ResourcesRoute
   '/share-your-story': typeof ShareYourStoryRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sponsors': typeof SponsorsRoute
@@ -299,6 +308,7 @@ export interface FileRouteTypes {
     | '/programs'
     | '/programs-activities'
     | '/register'
+    | '/resources'
     | '/share-your-story'
     | '/sitemap.xml'
     | '/sponsors'
@@ -329,6 +339,7 @@ export interface FileRouteTypes {
     | '/programs'
     | '/programs-activities'
     | '/register'
+    | '/resources'
     | '/share-your-story'
     | '/sitemap.xml'
     | '/sponsors'
@@ -360,6 +371,7 @@ export interface FileRouteTypes {
     | '/programs'
     | '/programs-activities'
     | '/register'
+    | '/resources'
     | '/share-your-story'
     | '/sitemap.xml'
     | '/sponsors'
@@ -392,6 +404,7 @@ export interface RootRouteChildren {
   ProgramsRoute: typeof ProgramsRoute
   ProgramsActivitiesRoute: typeof ProgramsActivitiesRoute
   RegisterRoute: typeof RegisterRoute
+  ResourcesRoute: typeof ResourcesRoute
   ShareYourStoryRoute: typeof ShareYourStoryRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SponsorsRoute: typeof SponsorsRoute
@@ -443,6 +456,13 @@ declare module '@tanstack/react-router' {
       path: '/share-your-story'
       fullPath: '/share-your-story'
       preLoaderRoute: typeof ShareYourStoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -651,6 +671,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProgramsRoute: ProgramsRoute,
   ProgramsActivitiesRoute: ProgramsActivitiesRoute,
   RegisterRoute: RegisterRoute,
+  ResourcesRoute: ResourcesRoute,
   ShareYourStoryRoute: ShareYourStoryRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SponsorsRoute: SponsorsRoute,

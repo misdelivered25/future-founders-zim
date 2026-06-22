@@ -92,9 +92,32 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: "https://future-founders-zim.lovable.app/" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Future Founders",
+          url: "https://future-founders-zim.lovable.app",
+          logo: "https://future-founders-zim.lovable.app/favicon.ico",
+          slogan: "Learn. Build. Lead. Succeed.",
+          description: "Pan-African youth organisation empowering 14–39 year-olds through financial literacy, entrepreneurship, leadership and skills training.",
+          contactPoint: [{
+            "@type": "ContactPoint",
+            telephone: "+263717428535",
+            contactType: "customer support",
+            areaServed: "Africa",
+            availableLanguage: ["English"],
+          }],
+          sameAs: ["https://wa.me/263717428535"],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,

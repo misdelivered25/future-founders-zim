@@ -6,7 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { img } from "@/lib/images";
-import { LogOut, Users, Mail, ShieldAlert, RefreshCw, Heart, Calendar, Image, Quote, FileText, Award, Handshake, ClipboardList } from "lucide-react";
+import { LogOut, Users, Mail, ShieldAlert, RefreshCw, Heart, Calendar, Image, Quote, FileText, Award, Handshake, ClipboardList, BookOpen } from "lucide-react";
 import { toast } from "sonner";
 import { ResourceManager, StatusBadge } from "@/components/admin/ResourceManager";
 
@@ -19,7 +19,7 @@ type Contact = { id: string; full_name: string; email: string; phone_number: str
 type Donation = { id: string; donor_name: string; email: string; amount: number; currency: string; impact_area: string; status: string; created_at: string };
 type SyncLog = { id: string; source: string; status: string; rows_synced: number; error_message: string | null; created_at: string };
 
-type Tab = "registrations" | "contacts" | "donations" | "events" | "gallery" | "testimonials" | "blog" | "sponsors" | "partners" | "sync";
+type Tab = "registrations" | "contacts" | "donations" | "events" | "gallery" | "testimonials" | "blog" | "resources" | "sponsors" | "partners" | "sync";
 
 const TABS: { id: Tab; label: string; icon: typeof Users }[] = [
   { id: "registrations", label: "Registrations", icon: Users },
@@ -29,6 +29,7 @@ const TABS: { id: Tab; label: string; icon: typeof Users }[] = [
   { id: "gallery", label: "Gallery", icon: Image },
   { id: "testimonials", label: "Testimonials", icon: Quote },
   { id: "blog", label: "Blog", icon: FileText },
+  { id: "resources", label: "Resources", icon: BookOpen },
   { id: "sponsors", label: "Sponsors", icon: Award },
   { id: "partners", label: "Partners", icon: Handshake },
   { id: "sync", label: "Sync logs", icon: ClipboardList },
@@ -330,6 +331,28 @@ function Admin() {
               { name: "logo_url", label: "Logo", render: (r) => r.logo_url ? <img src={String(r.logo_url)} alt="" className="h-10 max-w-[120px] object-contain" /> : "—" },
               { name: "name", label: "Name" },
               { name: "is_active", label: "Status", render: (r) => <StatusBadge value={!!r.is_active} trueLabel="Active" falseLabel="Hidden" /> },
+            ]}
+          />
+        )}
+
+        {tab === "resources" && (
+          <ResourceManager
+            table="resources" title="Resource library" togglePublished="is_published"
+            fields={[
+              { name: "title", label: "Title", required: true },
+              { name: "url", label: "URL", type: "url", required: true },
+              { name: "kind", label: "Kind", type: "select", options: ["pdf","link","video","template"] },
+              { name: "category", label: "Category" },
+              { name: "cover_url", label: "Cover image URL", type: "url" },
+              { name: "description", label: "Description", type: "textarea" },
+              { name: "sort_order", label: "Sort order", type: "number" },
+              { name: "is_published", label: "Published", type: "boolean" },
+            ]}
+            columns={[
+              { name: "title", label: "Title" },
+              { name: "kind", label: "Kind" },
+              { name: "category", label: "Category" },
+              { name: "is_published", label: "Status", render: (r) => <StatusBadge value={!!r.is_published} /> },
             ]}
           />
         )}
