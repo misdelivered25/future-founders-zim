@@ -43,7 +43,19 @@ async function gatewayFetch(path: string, init: RequestInit) {
   return text ? JSON.parse(text) : {};
 }
 
+async function ensureTabExists() {
+  const meta = await gatewayFetch(`/spreadsheets/${SPREADSHEET_ID}?fields=sheets(properties(title))`, { method: "GET" });
+  const titles: string[] = (meta.sheets ?? []).map((s: { properties?: { title?: string } }) => s.properties?.title ?? "");
+  if (!titles.includes(TAB)) {
+    await gatewayFetch(`/spreadsheets/${SPREADSHEET_ID}:batchUpdate`, {
+      method: "POST",
+      body: JSON.stringify({ requests: [{ addSheet: { properties: { title: TAB } } }] }),
+    });
+  }
+}
+
 async function ensureHeader() {
+  await ensureTabExists();
   const data = await gatewayFetch(`/spreadsheets/${SPREADSHEET_ID}/values/${TAB}!A1:N1`, { method: "GET" });
   const existing = (data.values?.[0] ?? []) as string[];
   if (existing.length === 0) {
