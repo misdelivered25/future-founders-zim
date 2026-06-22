@@ -335,6 +335,28 @@ function Admin() {
           />
         )}
 
+        {tab === "resources" && (
+          <ResourceManager
+            table="resources" title="Resource library" togglePublished="is_published"
+            fields={[
+              { name: "title", label: "Title", required: true },
+              { name: "url", label: "URL", type: "url", required: true },
+              { name: "kind", label: "Kind", type: "select", options: ["pdf","link","video","template"] },
+              { name: "category", label: "Category" },
+              { name: "cover_url", label: "Cover image URL", type: "url" },
+              { name: "description", label: "Description", type: "textarea" },
+              { name: "sort_order", label: "Sort order", type: "number" },
+              { name: "is_published", label: "Published", type: "boolean" },
+            ]}
+            columns={[
+              { name: "title", label: "Title" },
+              { name: "kind", label: "Kind" },
+              { name: "category", label: "Category" },
+              { name: "is_published", label: "Status", render: (r) => <StatusBadge value={!!r.is_published} /> },
+            ]}
+          />
+        )}
+
         {tab === "sync" && (
           <div className="bg-card border border-border rounded-2xl overflow-hidden overflow-x-auto">
             <Table>
